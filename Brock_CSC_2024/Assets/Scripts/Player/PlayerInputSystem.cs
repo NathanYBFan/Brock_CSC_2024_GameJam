@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class PlayerInputSystem : MonoBehaviour
@@ -17,7 +18,7 @@ public class PlayerInputSystem : MonoBehaviour
 
     [SerializeField, ReadOnly]
     [Foldout("Stats"), Tooltip("Move direction")]
-    private Vector2 move;
+    private Vector3 move;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) // Left click
         {
-            playerLeftClickScript.OnLeftClickDown();
+            //playerLeftClickScript.OnLeftClickDown();
         }
 
         if (Input.GetMouseButtonDown(1)) // Right  click
@@ -47,12 +48,18 @@ public class PlayerInputSystem : MonoBehaviour
         {
             playerInteractScript.CheckForInteractable();
         }
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!GameManager._Instance.InGame) return;
+            GameManager._Instance.PauseGame(true);
+        }
     }
 
     private void FixedUpdate()
     {
         move.x = Input.GetAxis("Horizontal");
-        move.y = Input.GetAxis("Vertical");
+        move.z = Input.GetAxis("Vertical");
     }
 
     public Vector3 GetMove() { return move; }

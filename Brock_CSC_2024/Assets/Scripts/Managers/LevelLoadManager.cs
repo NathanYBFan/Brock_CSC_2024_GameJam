@@ -9,13 +9,13 @@ public class LevelLoadManager : MonoBehaviour
     // Singleton Initialization
     public static LevelLoadManager _Instance;
 
-    // Serialize Fields
+    #region SerializeFields
     [SerializeField]
-    [Foldout("Dependencies"), Tooltip("")]
+    [Foldout("Dependencies"), Tooltip("Loading screen script to call methods on")]
     private LoadingScreen loadingScreen;
 
     [SerializeField, ReadOnly]
-    [Foldout("Stats"), Tooltip("")]
+    [Foldout("Stats"), Tooltip("Bool to tell if a level is loading")]
     private bool isLoadingLevel = false;
 
     [SerializeField, ReadOnly]
@@ -23,12 +23,14 @@ public class LevelLoadManager : MonoBehaviour
     private List<string> currentLevelList;
 
     [SerializeField]
-    [Foldout("Stats"), Tooltip("")]
+    [Foldout("Stats"), Tooltip("List of level names that are currently in play")]
     private List<string> levelNamesList;
+    #endregion
 
-    // Getters
+    #region Getters&Setters
     public List<string> LevelNamesList { get { return levelNamesList; } }
     public bool IsLoadingLevel { get { return isLoadingLevel; } }
+    #endregion
 
     private void Awake()
     {
@@ -45,21 +47,24 @@ public class LevelLoadManager : MonoBehaviour
     // Initial Level Load
     private void Start()
     {
-        StartLoadNewLevel(levelNamesList[0]);
+        StartLoadNewLevel(levelNamesList[0], true);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("PersistentScene"));
     }
 
     // Load a new level method
-    public void StartLoadNewLevel(string levelName)
+    public void StartLoadNewLevel(string levelName, bool showLoadingScreen)
     {
-        StartCoroutine(LoadLevel(levelName));
+        StartCoroutine(LoadLevel(levelName, showLoadingScreen));
     }
 
+    // Load a new level but as a menu additive
     public void LoadMenuOverlay(string menuName)
     {
         SceneManager.LoadScene(menuName, LoadSceneMode.Additive);
         currentLevelList.Insert(0, menuName); // Insert at front
     }
 
+    // Unload a menu
     public void UnloadMenuOverlay(string menuName)
     {
         SceneManager.UnloadSceneAsync(currentLevelList[0]);
@@ -68,11 +73,11 @@ public class LevelLoadManager : MonoBehaviour
     }
 
     // Coroutine to load level properly
-    private IEnumerator LoadLevel(string sceneToLoad)
+    private IEnumerator LoadLevel(string sceneToLoad, bool showLoadingScreen)
     {
         isLoadingLevel = true;
-
-        loadingScreen.gameObject.SetActive(true);
+        if (showLoadingScreen)
+            loadingScreen.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(0.25f);
 
@@ -81,6 +86,7 @@ public class LevelLoadManager : MonoBehaviour
         {
             for (int i = 0; i < currentLevelList.Count; i++)
                 SceneManager.UnloadSceneAsync(currentLevelList[i]);
+            currentLevelList.Clear();
         }
 
         // Load new scene
@@ -92,28 +98,38 @@ public class LevelLoadManager : MonoBehaviour
             yield return null;
         }
         loadingScreen.UpdateSlider(1);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneToLoad));
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneToLoad));
 
         currentLevelList.Add(sceneToLoad);
 
         // Initialize player etc.
         yield return new WaitForSeconds(1f);
-
+        
         loadingScreen.gameObject.SetActive(false);
         isLoadingLevel = false;
+
+        if (SceneManager.GetActiveScene().name == "MainGame")
+            StartNewGame();
 
         yield break;
     }
 
     // Level Reset
-    public void ResetAll()
+    public void ResetLevelAll()
     {
+        GameManager._Instance.InGame = true;
 
+
+        // RESET PLAYERS
+        GameManager._Instance.StartNewGame();
+
+        // RESET STATS
+        PlayerStatsManager._Instance.ResetStats();
     }
 
     // New game started
     public void StartNewGame()
     {
-        ResetAll();
+        ResetLevelAll();
     }
 }

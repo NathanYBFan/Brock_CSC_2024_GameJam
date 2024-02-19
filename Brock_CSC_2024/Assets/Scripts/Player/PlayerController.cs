@@ -3,14 +3,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Serialize Fields
+    #region SerializeFields
+    [Header("Movement")]
     [SerializeField]
     [Foldout("Dependencies"), Tooltip("")]
-    private Rigidbody2D m_Rigidbody2D;
+    private Rigidbody rigidBody;
 
     [SerializeField]
     [Foldout("Dependencies"), Tooltip("")]
     private GameObject PlayerRoot;
+
+    [SerializeField]
+    [Foldout("Dependencies"), Tooltip("")]
+    private Transform orientation;
 
     [SerializeField]
     [Foldout("Stats"), Tooltip("")]
@@ -20,26 +25,55 @@ public class PlayerController : MonoBehaviour
     [Foldout("Stats"), Tooltip("")]
     private bool canMove;
 
-    [SerializeField, Range(0, .3f)]
-    [Foldout("Stats"), Tooltip("")]
-    private float m_MovementSmoothing = .05f;
-
     [SerializeField, ReadOnly]
     [Foldout("Stats"), Tooltip("")]
     private Vector3 move;
 
-    // Private Variables
-    private Vector3 m_Velocity = Vector3.zero;
+    [Header("GroundCheck")]
+    [SerializeField]
+    [Foldout("Dependencies"), Tooltip("")]
+    private float playerHeight;
+
+    [SerializeField]
+    [Foldout("Dependencies"), Tooltip("")]
+    private LayerMask whatIsGround;
+
+    [SerializeField, ReadOnly]
+    [Foldout("Dependencies"), Tooltip("")]
+    private bool isGrounded;
+
+    [SerializeField]
+    [Foldout("Stats"), Tooltip("")]
+    private float groundDrag;
+    #endregion
+
+    #region Private Variables
+    private Vector3 moveDirection = Vector3.zero;
+    #endregion
+
+    private void Start()
+    {
+        if (rigidBody == null)
+            transform.parent.GetComponent<Rigidbody>();
+        rigidBody.freezeRotation = true;
+    }
+    private void Update()
+    {
+        isGrounded = Physics.Raycast(transform.position, Vector2.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+
+        if (isGrounded) rigidBody.drag = groundDrag;
+        else rigidBody.drag = 0;
+    }
 
     private void FixedUpdate()
     {
         if (!canMove) return;
 
         move = PlayerInputSystem._Instance.GetMove();
+        move.Normalize();
 
-        // Move the character by finding the target velocity
-        Vector3 targetVelocity = move * moveSpeed;
-        // And then smoothing it out and applying it to the character
-        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        moveDirection = orientation.forward * move.z + orientation.right * move.x;
+
+        rigidBody.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
 }

@@ -3,23 +3,35 @@ using UnityEngine;
 
 public class PlayerTurnToMouse : MonoBehaviour
 {
-    // Serialize Fields
-    [SerializeField, ReadOnly]
-    [Foldout("Dependencies"), Tooltip("The position of the mouse")]
-    private Vector3 mousePos;
+# region SerializeFields
+    [SerializeField]
+    [Foldout("Dependencies"), Tooltip("")]
+    private Transform orientation;
 
     [SerializeField]
-    [Foldout("Dependencies"), Tooltip("Pivot to turn on the player to face the mouse")]
-    private Transform playerCenterPivot;
+    [Foldout("Stats"), Tooltip("")]
+    private Vector2 mouseSensitivity = Vector2.one;
+    #endregion
 
-    [SerializeField]
-    [Foldout("Dependencies"), Tooltip("Rigidbody used to detect collisions and move")]
-    private Rigidbody2D rigidBody2D;
+    private float yRotation, xRotation;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     private void Update()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSensitivity.x;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSensitivity.y;
 
-        playerCenterPivot.transform.up = (mousePos - new Vector2(playerCenterPivot.position.x, playerCenterPivot.position.y)) * Time.deltaTime;
+        yRotation += mouseX;
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        // Rotate camera and orientation
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }
