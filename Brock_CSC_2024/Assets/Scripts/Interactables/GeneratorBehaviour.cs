@@ -10,6 +10,5 @@ public class GeneratorBehaviour : Interactable
     public override void ApplyEffect()
     {
         return;
-        throw new System.NotImplementedException();
     }
 }

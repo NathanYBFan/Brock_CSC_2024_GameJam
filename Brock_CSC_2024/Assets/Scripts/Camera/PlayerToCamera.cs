@@ -68,7 +68,7 @@ public class PlayerToCamera : MonoBehaviour
         }
         else
         {
-            // Mean that no more stuff is blocking the view and sometimes all the stuff is not blocking as the same time
+            // Mean that no more stuff is blocking the view and sometimes all the stuff is not blocking at the same time
             if (obstructions != null && obstructions.Length > 0)
             {
                 for (int i = 0; i < obstructions.Length; i++)

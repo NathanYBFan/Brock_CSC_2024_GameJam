@@ -7,19 +7,15 @@ public class PlayerInputSystem : MonoBehaviour
     // Singleton Initialization
     public static PlayerInputSystem _Instance;
 
-    // Serialize Fields
+    #region Serialize Fields
     [SerializeField]
     [Foldout("Dependencies"), Tooltip("Script used to check for player interaction")]
-    private PlayerInteract playerInteractScript;
-
-    [SerializeField]
-    [Foldout("Dependencies"), Tooltip("Script used to check for player left click on UI")]
     private PlayerLeftClick playerLeftClickScript;
 
     [SerializeField, ReadOnly]
     [Foldout("Stats"), Tooltip("Move direction")]
     private Vector3 move;
-
+    #endregion
     private void Awake()
     {
         if (_Instance != null && _Instance != this)
@@ -36,7 +32,7 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) // Left click
         {
-            //playerLeftClickScript.OnLeftClickDown();
+            playerLeftClickScript.OnLeftClickDown();
         }
 
         if (Input.GetMouseButtonDown(1)) // Right  click
@@ -46,9 +42,9 @@ public class PlayerInputSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E)) // Interact
         {
-            playerInteractScript.CheckForInteractable();
+            playerLeftClickScript.OnLeftClickDown();
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!GameManager._Instance.InGame) return;
