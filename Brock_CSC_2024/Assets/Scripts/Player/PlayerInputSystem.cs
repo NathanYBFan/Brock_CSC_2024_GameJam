@@ -48,7 +48,7 @@ public class PlayerInputSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!GameManager._Instance.InGame) return;
-            GameManager._Instance.PauseGame(true);
+            GameManager._Instance.PauseGame(!GameManager._Instance.IsPaused);
         }
     }
 

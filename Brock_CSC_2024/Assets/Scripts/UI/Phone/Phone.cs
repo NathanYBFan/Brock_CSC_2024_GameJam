@@ -60,14 +60,10 @@ public class Phone : MonoBehaviour
         yield break;
     }
 
-    public void GetNotification(int numberOfNotifs)
+    public void UpdateNotificationDisplay()
     {
-        notifCount += numberOfNotifs;
-        UpdateNotificationDisplay();
-    }
+        notifCount = NotificationManager._Instance.GetAllNotifications().Count;
 
-    private void UpdateNotificationDisplay()
-    {
         if (notifCount < 0) notifCount = 0;
         if (notifCount == 0) notifTextbox.text = "";
         else notifTextbox.text = notifCount.ToString();

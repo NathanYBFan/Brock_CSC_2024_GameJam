@@ -58,9 +58,8 @@ public class GameManager : MonoBehaviour
     {
 		if (!inGame) return;
 
-		isPaused = !isPaused;
-        if (enablePauseMenu)
-            pauseMenu.SetActive(isPaused);
+		isPaused = enablePauseMenu;
+        pauseMenu.SetActive(enablePauseMenu);
 
         if (isPaused)
 			Time.timeScale = 0f;
