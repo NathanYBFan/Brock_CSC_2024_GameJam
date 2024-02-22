@@ -30,7 +30,6 @@ public abstract class Item : MonoBehaviour
     public abstract void Use(RaycastHit2D hit);
     public void PickUpItem()
     {
-        
         Debug.Log("Item input status: " + InventoryUI._Instance.AddItemToInventory(this));
     }
 }
