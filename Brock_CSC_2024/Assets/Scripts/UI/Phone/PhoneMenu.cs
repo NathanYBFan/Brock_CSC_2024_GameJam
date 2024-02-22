@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PhoneMenu : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class PhoneMenu : MonoBehaviour
 
         // Disable all screens
         ResetAllScreens();
-        
+
         screens[0].SetActive(true); // Set lockscreen active
     }
 

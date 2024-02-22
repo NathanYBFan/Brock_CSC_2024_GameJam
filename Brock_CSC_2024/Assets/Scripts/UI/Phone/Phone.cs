@@ -25,11 +25,10 @@ public class Phone : MonoBehaviour
 
     private void Start()
     {
-        phoneUI.SetActive(false);
         phoneObject.transform.position = phonePositions[0].position; // Up
         notifCount = 0;
         UpdateNotificationDisplay();
-    }
+    }   
 
     public void OnPressOnPhone()
     {

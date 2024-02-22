@@ -12,16 +12,19 @@ public class LockScreen : MonoBehaviour
     [SerializeField]
     private List<GameObject> notifications;
 
+    [SerializeField]
+    private int messageMaxLength = 30;
+
     private void OnEnable()
     {
         for (int i = 0; i < NotificationManager._Instance.GetAllNotifications().Count; i++)
         {
             notifications.Add(GameObject.Instantiate(notificationPrefab, notificationHolder));
             string message = NotificationManager._Instance.GetAllNotifications()[i];
-            if (message.Length < 25)
+            if (message.Length < messageMaxLength)
                 notifications[i].GetComponent<NotificationPopup>().TextBox.text = NotificationManager._Instance.GetAllNotifications()[i];
             else
-                notifications[i].GetComponent<NotificationPopup>().TextBox.text = NotificationManager._Instance.GetAllNotifications()[i].Substring(0, 25) + "...";
+                notifications[i].GetComponent<NotificationPopup>().TextBox.text = NotificationManager._Instance.GetAllNotifications()[i].Substring(0, messageMaxLength) + "...";
         }
     }
 

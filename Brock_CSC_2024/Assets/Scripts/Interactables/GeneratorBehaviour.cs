@@ -4,7 +4,7 @@ public class GeneratorBehaviour : Interactable
 {
     public override void InteractedWith()
     {
-        Debug.Log("IT RUNS");
+        TaskManager._Instance.TaskComplete(0);
     }
 
     public override void ApplyEffect()

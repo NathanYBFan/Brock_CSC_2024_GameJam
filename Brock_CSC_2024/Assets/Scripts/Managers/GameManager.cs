@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,25 +8,32 @@ public class GameManager : MonoBehaviour
 	// Singleton Initialization
 	public static GameManager _Instance;
 
-    #region SerializeFields
-    [SerializeField]
+	#region SerializeFields
+	[SerializeField]
 	[Foldout("Dependencies"), Tooltip("Pause Menu GameObject")]
 	private GameObject pauseMenu;
 
-    [SerializeField]
+	[SerializeField]
 	[Foldout("Dependencies"), Tooltip("All players as a referenceable gameobject")]
 	private GameObject player;
+
+	[SerializeField]
+	private float roundTimer = 60; // In seconds
+	[SerializeField, ReadOnly]
+	private float timer = 0f;
     #endregion
 
     #region PrivateVariables
     private bool inGame;
-    private bool isPaused;
-    #endregion
+	private bool isPaused;
+	#endregion
 
-    #region Getters&Setters
-    public GameObject Player { get { return player; } set { player = value; } }
+	#region Getters&Setters
+	public GameObject Player { get { return player; } set { player = value; } }
 	public bool InGame { get { return inGame; } set { inGame = value; } }
 	public bool IsPaused { get { return isPaused; } set { isPaused = value; } }
+	public float RoundTimer { get { return roundTimer; } }
+	public float Timer { get { return timer; } }
     #endregion
 
     private void Awake()
@@ -45,13 +53,18 @@ public class GameManager : MonoBehaviour
 	{
 		SpawnPlayersAtSpawnpoint();
         player.SetActive(true);
+
+		StartCoroutine(StartTimer());
     }
 
 	// Reset everything when game ends
 	public void EndGame()
 	{
 		PauseGame(false);
-		QuitToMainMenu();
+		// Calculate score
+		// Win/Lose screen
+
+		QuitToMainMenu(); // Debug only, delete this later
     }
 
     public void PauseGame(bool enablePauseMenu)
@@ -79,6 +92,7 @@ public class GameManager : MonoBehaviour
 	{
         PauseGame(false);
 		inGame = false;
+		LevelLoadManager._Instance.StartLoadNewLevel(LevelLoadManager._Instance.LevelNamesList[3], true);
     }
 
 	// Spawn players at appropiate spawn points
@@ -90,4 +104,16 @@ public class GameManager : MonoBehaviour
         player.GetComponentInChildren<Rigidbody>().useGravity = true;
         player.SetActive(true);
     }
+
+	private IEnumerator StartTimer()
+	{
+		timer = roundTimer;
+		while (timer > 0)
+		{
+			timer -= Time.deltaTime;
+			yield return null;
+		}
+		timer = 0;
+		EndGame();
+	}
 }
