@@ -4,19 +4,22 @@ using UnityEngine.Rendering;
 public class DisableMeshCollider : MonoBehaviour
 {
     [SerializeField]
-    private MeshRenderer[] meshRendererArray;
+    private GameObject opaqueParent;
+
+    [SerializeField]
+    private GameObject transparentParent;
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        foreach(MeshRenderer mr in meshRendererArray)
-            mr.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+        opaqueParent.SetActive(false);
+        transparentParent.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        foreach (MeshRenderer mr in meshRendererArray)
-            mr.shadowCastingMode = ShadowCastingMode.On;
+        opaqueParent.SetActive(true);
+        transparentParent.SetActive(false);
     }
 }
