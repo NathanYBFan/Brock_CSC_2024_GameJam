@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseOverOutline : MonoBehaviour
@@ -7,11 +5,11 @@ public class MouseOverOutline : MonoBehaviour
     [SerializeField]
     private Outline outline;
 
-    private void OnMouseEnter()
+    public void Hovering()
     {
         outline.enabled = true;
     }
-    private void OnMouseExit()
+    public void NotHovering()
     {
         outline.enabled = false;
     }

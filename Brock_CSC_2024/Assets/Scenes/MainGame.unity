@@ -36,7 +36,7 @@ RenderSettings:
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 0.753
-  m_CustomReflection: {fileID: 2800000, guid: 9099030225f8adb47b83d1906153f946, type: 3}
+  m_CustomReflection: {fileID: 8900000, guid: 4d0e2afcfab07244793f6f6a87a9bea6, type: 3}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.13575369, g: 0.16996273, b: 0.23111291, a: 0.753}
   m_UseRadianceAmbientProbe: 0
@@ -1674,7 +1674,7 @@ GameObject:
   - component: {fileID: 314577352}
   - component: {fileID: 314577351}
   - component: {fileID: 314577353}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5991,7 +5991,7 @@ GameObject:
   - component: {fileID: 895525022}
   - component: {fileID: 895525021}
   - component: {fileID: 895525027}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Garbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

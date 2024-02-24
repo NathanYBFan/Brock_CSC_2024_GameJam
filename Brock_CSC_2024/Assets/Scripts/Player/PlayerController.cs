@@ -75,5 +75,6 @@ public class PlayerController : MonoBehaviour
         moveDirection = orientation.forward * move.z + orientation.right * move.x;
 
         rigidBody.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        if (moveDirection == Vector3.zero) rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
     }
 }

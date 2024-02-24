@@ -1,5 +1,4 @@
 using NaughtyAttributes;
-using Newtonsoft.Json;
 using UnityEngine;
 
 public class PlayerInputSystem : MonoBehaviour
@@ -15,7 +14,14 @@ public class PlayerInputSystem : MonoBehaviour
     [SerializeField, ReadOnly]
     [Foldout("Stats"), Tooltip("Move direction")]
     private Vector3 move;
+
+    [SerializeField]
+    private LayerMask layerMask;
     #endregion
+
+    private RaycastHit hit;
+    private Collider previousCollider;
+
     private void Awake()
     {
         if (_Instance != null && _Instance != this)
@@ -50,6 +56,17 @@ public class PlayerInputSystem : MonoBehaviour
             if (!GameManager._Instance.InGame) return;
             GameManager._Instance.PauseGame(!GameManager._Instance.IsPaused);
         }
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (previousCollider != null)
+            previousCollider.GetComponent<MouseOverOutline>().NotHovering();
+
+        // Make sure something was hit
+        if (!Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) return;
+        hit.collider.GetComponent<MouseOverOutline>().Hovering();
+
+        previousCollider = hit.collider;
     }
 
     private void FixedUpdate()
