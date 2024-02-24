@@ -22,6 +22,11 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Foldout("Stats"), Tooltip("Bool to check if item should be destroyed on use")]
     private bool destroyOnUse = true;
 
+    [SerializeField]
+    [Foldout("Stats"), Tooltip("")]
+    private LayerMask layerMask;
+
+
     // Private Variables
     private Transform parentAfterDrag;
 
@@ -40,7 +45,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         // Put at front
         transform.SetAsLastSibling();
-        
+
+        TaskManager._Instance.HighlightGarabageCan(true);
+
         // Invisible to raycast
         image.raycastTarget = false;
     }
@@ -52,8 +59,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity);
-        if (!CheckForInteraction(hit)) return;
+        TaskManager._Instance.HighlightGarabageCan(false);
+
+        if (!CheckForInteraction()) return;
 
         // Confirm presence in inventory slot
         parentAfterDrag.transform.parent.GetComponent<InventorySlot>().MoveItem(itemItIs);
@@ -65,16 +73,21 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         image.raycastTarget = true;
     }
 
-    private bool CheckForInteraction(RaycastHit2D hit)
+    private bool CheckForInteraction()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
         // If raycast hits something
-        if (!hit == true || !hit.transform.CompareTag("ItemInteractable")) return false;
-        
+        if (!Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask) || !hit.transform.CompareTag("GarbageCan")) return true;
+
         // Use item
         itemItIs.Use(hit);
         // If shouldnt destroy on use return true to continue 
         if (!destroyOnUse) return true;
-        
+
+        parentAfterDrag.transform.parent.GetComponent<InventorySlot>().RemoveItem();
+
         // Destroy object and return false to not continue
         Destroy(rootObject.gameObject);
         return false;

@@ -5,6 +5,11 @@ public class GarbageCan : Interactable
     [SerializeField]
     private int garbageCanCapasity;
 
+    private void Start()
+    {
+        TaskManager._Instance.GarbageCans.Add(this.gameObject);
+    }
+
     public override void ApplyEffect()
     {
         return; // No effect

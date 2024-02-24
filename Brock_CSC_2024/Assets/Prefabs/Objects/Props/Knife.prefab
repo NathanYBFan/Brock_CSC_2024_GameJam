@@ -11,8 +11,11 @@ GameObject:
   - component: {fileID: 8825695787531609378}
   - component: {fileID: 5992835436755452472}
   - component: {fileID: 665814531776936941}
-  - component: {fileID: 7590469093408091344}
-  m_Layer: 0
+  - component: {fileID: 8718269601672400040}
+  - component: {fileID: 2233900551630514822}
+  - component: {fileID: 4099278764726541015}
+  - component: {fileID: 4735775197752317469}
+  m_Layer: 9
   m_Name: Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7590469093408091344
-MeshCollider:
+--- !u!65 &8718269601672400040
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +97,52 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4898376589914736847, guid: c9b715708c3630543968b0872f7a235b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.84658766, y: 0.081566595, z: 0.05038063}
+  m_Center: {x: 0.0000009536743, y: -0.00000047683716, z: 0.025190275}
+--- !u!114 &2233900551630514822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148580088101013296}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &4099278764726541015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148580088101013296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5e349577a34a844a34f8c585ad14ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outline: {fileID: 2233900551630514822}
+--- !u!114 &4735775197752317469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148580088101013296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a564ce442e201044810eb1c3c814987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectMainCollider: {fileID: 8718269601672400040}
+  nameOfInteractable: Knife
+  rootObject: {fileID: 7148580088101013296}

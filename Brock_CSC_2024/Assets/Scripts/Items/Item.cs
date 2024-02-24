@@ -27,9 +27,10 @@ public abstract class Item : MonoBehaviour
     public GameObject InventoryDisplayItem { get { return inventoryDisplayItem; } }
 
 
-    public abstract void Use(RaycastHit2D hit);
+    public abstract void Use(RaycastHit hit);
     public void PickUpItem()
     {
-        Debug.Log("Item input status: " + InventoryUI._Instance.AddItemToInventory(this));
+        if (InventoryUI._Instance.AddItemToInventory(this))
+            Destroy(this.gameObject);
     }
 }

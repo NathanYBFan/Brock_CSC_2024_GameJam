@@ -60,7 +60,10 @@ public class PlayerInputSystem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (previousCollider != null)
+        {
             previousCollider.GetComponent<MouseOverOutline>().NotHovering();
+            previousCollider = null;
+        }
 
         // Make sure something was hit
         if (!Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) return;

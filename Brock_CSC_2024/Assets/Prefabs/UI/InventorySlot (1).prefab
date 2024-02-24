@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6191427760689592449}
   - component: {fileID: 6191427760689592455}
   - component: {fileID: 6191427760689592448}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6191427761012381105}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -146,7 +147,7 @@ GameObject:
   - component: {fileID: 6191427761012381111}
   - component: {fileID: 6191427761012381104}
   - component: {fileID: 6191427761012381110}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: InventorySlot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +169,7 @@ RectTransform:
   - {fileID: 1736768257151054651}
   - {fileID: 6191427760689592449}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -243,7 +245,7 @@ GameObject:
   - component: {fileID: 1736768257151054651}
   - component: {fileID: 9042596901791736618}
   - component: {fileID: 7249232135638212137}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ItemDisplayPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,6 +265,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6191427761012381105}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

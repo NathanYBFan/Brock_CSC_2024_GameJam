@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TaskManager : MonoBehaviour
@@ -13,6 +15,14 @@ public class TaskManager : MonoBehaviour
     [SerializeField]
     private int[] scoreAssignedToTasks;
 
+    [SerializeField]
+    private List<GameObject> garbageCans;
+
+    [SerializeField]
+    private List<GameObject> dishesToCleanUp;
+
+    public List<GameObject> DishesToCleanUp { get { return dishesToCleanUp; } set { dishesToCleanUp = value; } }
+    public List<GameObject> GarbageCans { get { return garbageCans; } set { garbageCans = value; } }
     public string[] AvailableTasks { get { return availableTasks; } }
 
     private void Awake()
@@ -37,8 +47,20 @@ public class TaskManager : MonoBehaviour
     {
         // Visual
         notePadScreen.TaskComplete(index);
-        Debug.Log(availableTasks[index]);
         // Add score
         PlayerStatsManager._Instance.IncreasePoints(scoreAssignedToTasks[index]);
+    }
+
+    public void HighlightGarabageCan(bool onOrOff)
+    {
+        foreach (GameObject garbageCan in garbageCans)
+            garbageCan.GetComponent<Outline>().enabled = onOrOff;
+    }
+    
+    public void CleanedUpDish(GameObject dish)
+    {
+        dishesToCleanUp.Remove(dish);
+        if (dishesToCleanUp.Count <= 0)
+            TaskComplete(2);
     }
 }

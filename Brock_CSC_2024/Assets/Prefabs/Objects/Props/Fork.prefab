@@ -11,8 +11,11 @@ GameObject:
   - component: {fileID: 4724403528378418}
   - component: {fileID: 740714787467678369}
   - component: {fileID: 1407279823763119929}
-  - component: {fileID: 6530206670520539482}
-  m_Layer: 0
+  - component: {fileID: 1916386771127258689}
+  - component: {fileID: 5774306590842481267}
+  - component: {fileID: 1537006352689417489}
+  - component: {fileID: 8298500398391542312}
+  m_Layer: 9
   m_Name: Fork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6530206670520539482
-MeshCollider:
+--- !u!65 &1916386771127258689
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +97,52 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7898551805005928994, guid: c9b715708c3630543968b0872f7a235b, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.6563195, y: 0.112660326, z: 0.047335584}
+  m_Center: {x: -0.0064006746, y: -0.00000023841858, z: 0.023668014}
+--- !u!114 &5774306590842481267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014252932764781274}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &1537006352689417489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014252932764781274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5e349577a34a844a34f8c585ad14ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outline: {fileID: 5774306590842481267}
+--- !u!114 &8298500398391542312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014252932764781274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a564ce442e201044810eb1c3c814987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectMainCollider: {fileID: 1916386771127258689}
+  nameOfInteractable: Fork
+  rootObject: {fileID: 9014252932764781274}

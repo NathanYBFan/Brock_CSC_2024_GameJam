@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 3425355456287054442}
   - component: {fileID: 311608370962196480}
   - component: {fileID: 4156424783806774160}
-  m_Layer: 0
+  - component: {fileID: 7092865843251048706}
+  - component: {fileID: 4626869820113217377}
+  m_Layer: 6
   m_Name: TrashRect
-  m_TagString: Untagged
+  m_TagString: GarbageCan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,3 +100,36 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5836150047290189711, guid: c9b715708c3630543968b0872f7a235b, type: 3}
+--- !u!114 &7092865843251048706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5877850549120323704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4620dd8c620ce4b4ea88701106ee15d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectMainCollider: {fileID: 4156424783806774160}
+  nameOfInteractable: Garbage Can
+  garbageCanCapasity: 5
+--- !u!114 &4626869820113217377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5877850549120323704}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0.2901961, b: 1, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

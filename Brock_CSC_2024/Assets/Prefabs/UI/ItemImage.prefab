@@ -93,3 +93,6 @@ MonoBehaviour:
   image: {fileID: 8167873146232090425}
   itemItIs: {fileID: 0}
   destroyOnUse: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
