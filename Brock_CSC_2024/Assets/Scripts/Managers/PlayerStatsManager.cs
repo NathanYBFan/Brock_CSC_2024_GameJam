@@ -10,10 +10,15 @@ public class PlayerStatsManager : MonoBehaviour
     [SerializeField, ReadOnly]
     [Foldout("Stats"), Tooltip("Array of points for each player")]
     private int playerPoints;
+
+    [SerializeField, ReadOnly]
+    [Foldout("Stats"), Tooltip("Array of points for each player")]
+    private int pointsNeededToWin;
     #endregion
 
     #region Setters&Getters
     public int PlayerPoints { get { return playerPoints; } set { playerPoints = value; } }
+    public int PointsNeededToWin { get { return pointsNeededToWin} set { pointsNeededToWin = value; } }
     #endregion
 
     private void Awake()

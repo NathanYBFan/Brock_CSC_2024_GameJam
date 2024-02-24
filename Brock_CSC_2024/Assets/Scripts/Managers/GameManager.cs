@@ -21,10 +21,13 @@ public class GameManager : MonoBehaviour
 	private float roundTimer = 60; // In seconds
 	[SerializeField, ReadOnly]
 	private float timer = 0f;
+
+	[SerializeField]
+	private GameObject UI;
     #endregion
 
     #region PrivateVariables
-    private bool inGame;
+    private bool inGame = false;
 	private bool isPaused;
 	#endregion
 
@@ -46,24 +49,28 @@ public class GameManager : MonoBehaviour
 
 		else if (_Instance == null)
 			_Instance = this;
+
+		inGame = false;
 	}
 
 	// Play game initial setups
 	public void StartNewGame()
 	{
+		UI.SetActive(true);
 		SpawnPlayersAtSpawnpoint();
         player.SetActive(true);
-
+		inGame = true;
 		StartCoroutine(StartTimer());
     }
 
 	// Reset everything when game ends
 	public void EndGame()
 	{
-		PauseGame(false);
+		UI.SetActive(false);
+        PauseGame(false);
 		// Calculate score
 		// Win/Lose screen
-
+		inGame = false;
 		QuitToMainMenu(); // Debug only, delete this later
     }
 
@@ -92,7 +99,7 @@ public class GameManager : MonoBehaviour
 	{
         PauseGame(false);
 		inGame = false;
-		LevelLoadManager._Instance.StartLoadNewLevel(LevelLoadManager._Instance.LevelNamesList[3], true);
+		LevelLoadManager._Instance.StartLoadNewLevel(LevelLoadManager._Instance.LevelNamesList[3]);
     }
 
 	// Spawn players at appropiate spawn points

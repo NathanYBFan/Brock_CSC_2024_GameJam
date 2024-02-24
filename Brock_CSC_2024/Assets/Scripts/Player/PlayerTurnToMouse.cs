@@ -3,35 +3,38 @@ using UnityEngine;
 
 public class PlayerTurnToMouse : MonoBehaviour
 {
-# region SerializeFields
+    [Foldout("Script Dependancies")]
     [SerializeField]
-    [Foldout("Dependencies"), Tooltip("")]
-    private Transform orientation;
+    [Tooltip("Camera being used to see the character")]
+    private Camera mainCamera;
 
+    [Foldout("Script Dependancies")]
     [SerializeField]
-    [Foldout("Stats"), Tooltip("")]
-    private Vector2 mouseSensitivity = Vector2.one;
-    #endregion
+    [Tooltip("The object to rotate")]
+    private Transform target;
 
-    private float yRotation, xRotation;
+    private LayerMask floorLayerMask; // Layer mask to only care about the floor
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        floorLayerMask = LayerMask.GetMask("Ground");
+    }
+    private void LateUpdate()
+    {
+        if (!GameManager._Instance.InGame) return;
+        RotateTowardsMouse();
     }
 
-    private void Update()
+    private void RotateTowardsMouse()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSensitivity.x;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSensitivity.y;
+        if (Time.timeScale == 0f) return;
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        yRotation += mouseX;
-
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        // Rotate camera and orientation
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f, floorLayerMask))
+        {
+            Vector3 spinToPoint = hitInfo.point;
+            spinToPoint.y = target.position.y;
+            target.transform.LookAt(spinToPoint);
+        }
     }
 }

@@ -6,7 +6,6 @@ public class MouseOverOutline : MonoBehaviour
     private Outline outline;
     public void Hovering()
     {
-        Debug.Log("isHovering");
         outline.enabled = true;
     }
     public void NotHovering()

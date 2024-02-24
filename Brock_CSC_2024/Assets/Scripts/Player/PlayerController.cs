@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!canMove) return;
+        if (!canMove || !GameManager._Instance.InGame) return;
 
         move = PlayerInputSystem._Instance.GetMove();
         move.Normalize();

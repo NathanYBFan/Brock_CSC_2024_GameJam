@@ -47,14 +47,14 @@ public class LevelLoadManager : MonoBehaviour
     // Initial Level Load
     private void Start()
     {
-        StartLoadNewLevel(levelNamesList[0], true);
+        StartLoadNewLevel(levelNamesList[0]);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("PersistentScene"));
     }
 
     // Load a new level method
-    public void StartLoadNewLevel(string levelName, bool showLoadingScreen)
+    public void StartLoadNewLevel(string levelName)
     {
-        StartCoroutine(LoadLevel(levelName, showLoadingScreen));
+        StartCoroutine(LoadLevel(levelName));
     }
 
     // Load a new level but as a menu additive
@@ -73,11 +73,10 @@ public class LevelLoadManager : MonoBehaviour
     }
 
     // Coroutine to load level properly
-    private IEnumerator LoadLevel(string sceneToLoad, bool showLoadingScreen)
+    private IEnumerator LoadLevel(string sceneToLoad)
     {
         isLoadingLevel = true;
-        if (showLoadingScreen)
-            loadingScreen.gameObject.SetActive(true);
+        loadingScreen.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(0.25f);
 

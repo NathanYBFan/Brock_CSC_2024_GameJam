@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 1565661342321301923}
   - component: {fileID: 5682829903893898200}
   - component: {fileID: 3435292841216697554}
+  - component: {fileID: -5655964158866742313}
   - component: {fileID: 6662393383298070436}
   - component: {fileID: 8684029471410133952}
   - component: {fileID: -1688025670093134647}
-  - component: {fileID: 5377623662909445660}
+  - component: {fileID: -146823376373828213}
   m_Layer: 9
   m_Name: CanB2 1
   m_TagString: Untagged
@@ -87,6 +88,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-5655964158866742313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257490198306852658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1213ee7f1998b49a18c48c918be69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemRootObject: {fileID: 8257490198306852658}
+  inventoryDisplayImage: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b,
+    type: 3}
+  inventoryDisplayItem: {fileID: 5943293106578486438, guid: b77b05181308e774f8bf2275ba716413,
+    type: 3}
+  nameOfInteractable: 1
 --- !u!64 &6662393383298070436
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -98,7 +117,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8382295979859652080, guid: c9b715708c3630543968b0872f7a235b, type: 3}
 --- !u!114 &8684029471410133952
@@ -373,21 +392,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outline: {fileID: -5344506233336122935, guid: 09d4417e1e5ec2140ac30d6d39257a17,
     type: 3}
---- !u!114 &5377623662909445660
-MonoBehaviour:
+--- !u!54 &-146823376373828213
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8257490198306852658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5cfa5968ca11045b456fefc148f376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemRootObject: {fileID: 8257490198306852658}
-  inventoryDisplayImage: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225,
-    type: 3}
-  inventoryDisplayItem: {fileID: 5943293106578486438, guid: b77b05181308e774f8bf2275ba716413,
-    type: 3}
-  nameOfInteractable: Can
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
