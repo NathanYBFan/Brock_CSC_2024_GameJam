@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00095577084}
+  m_AnchoredPosition: {x: 0, y: 0.000051474064}
   m_SizeDelta: {x: 0, y: 33.7306}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &39443513
@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1936395924}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99913216
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5264,6 +5264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1620261517}
   - component: {fileID: 1620261518}
+  - component: {fileID: 1620261519}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Player
@@ -5301,6 +5302,26 @@ CapsuleCollider:
   m_Height: 2.87654
   m_Direction: 1
   m_Center: {x: 0.0056940913, y: -0.70774114, z: 0.0052184165}
+--- !u!95 &1620261519
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620261516}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83358bec1644d1c4ab13d0a0167d683e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1626751621
 GameObject:
   m_ObjectHideFlags: 0
