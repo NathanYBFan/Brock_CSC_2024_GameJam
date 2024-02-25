@@ -21,6 +21,10 @@ public class TaskManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> dishesToCleanUp;
 
+    [SerializeField]
+    private List<Cans> emptyCans;
+
+    public List<Cans> EmptyCans { get { return emptyCans; } set { emptyCans = value; } }
     public List<GameObject> DishesToCleanUp { get { return dishesToCleanUp; } set { dishesToCleanUp = value; } }
     public List<GameObject> GarbageCans { get { return garbageCans; } set { garbageCans = value; } }
     public string[] AvailableTasks { get { return availableTasks; } }
@@ -62,5 +66,12 @@ public class TaskManager : MonoBehaviour
         dishesToCleanUp.Remove(dish);
         if (dishesToCleanUp.Count <= 0)
             TaskComplete(2);
+    }
+
+    public void CleanedUpCan(Cans can)
+    {
+        emptyCans.Remove(can);
+        if (emptyCans.Count <= 0)
+            TaskComplete(1);
     }
 }

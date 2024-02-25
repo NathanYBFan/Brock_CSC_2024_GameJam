@@ -24,6 +24,7 @@ public class PlayerToCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!GameManager._Instance.InGame) return;
         transform.position = Vector3.SmoothDamp(transform.position, target.position + Offset, ref currentVelocity, movementSmoothing);
     }
 }

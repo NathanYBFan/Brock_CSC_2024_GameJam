@@ -46,7 +46,16 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         // Put at front
         transform.SetAsLastSibling();
 
-        TaskManager._Instance.HighlightGarabageCan(true);
+        switch (itemItIs.NameOfInteractable)
+        {
+            case InteractableName.Can:
+                TaskManager._Instance.HighlightGarabageCan(true);
+                break;
+            case InteractableName.Garbage:
+                break;
+            case InteractableName.Figure:
+                break;
+        }
 
         // Invisible to raycast
         image.raycastTarget = false;
