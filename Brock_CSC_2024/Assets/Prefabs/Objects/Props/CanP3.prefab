@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemRootObject: {fileID: 5335073378414848166}
-  inventoryDisplayImage: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b,
+  inventoryDisplayImage: {fileID: 21300000, guid: 19452eaf1990adf4ba1ab79fc66ae432,
     type: 3}
   inventoryDisplayItem: {fileID: 5943293106578486438, guid: b77b05181308e774f8bf2275ba716413,
     type: 3}

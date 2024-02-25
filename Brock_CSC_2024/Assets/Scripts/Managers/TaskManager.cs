@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TaskManager : MonoBehaviour
@@ -19,14 +18,22 @@ public class TaskManager : MonoBehaviour
     private List<GameObject> garbageCans;
 
     [SerializeField]
-    private List<GameObject> dishesToCleanUp;
+    private List<GameObject> sinks;
+
+    [SerializeField]
+    private List<GameObject> shelves;
+
+    [SerializeField]
+    private List<Dishes> dishesToCleanUp;
 
     [SerializeField]
     private List<Cans> emptyCans;
 
     public List<Cans> EmptyCans { get { return emptyCans; } set { emptyCans = value; } }
-    public List<GameObject> DishesToCleanUp { get { return dishesToCleanUp; } set { dishesToCleanUp = value; } }
+    public List<Dishes> DishesToCleanUp { get { return dishesToCleanUp; } set { dishesToCleanUp = value; } }
     public List<GameObject> GarbageCans { get { return garbageCans; } set { garbageCans = value; } }
+    public List<GameObject> Sinks { get { return sinks; } set { sinks = value; } }
+    public List<GameObject> Shelves { get { return shelves; } set { shelves = value; } }
     public string[] AvailableTasks { get { return availableTasks; } }
 
     private void Awake()
@@ -60,8 +67,20 @@ public class TaskManager : MonoBehaviour
         foreach (GameObject garbageCan in garbageCans)
             garbageCan.GetComponent<Outline>().enabled = onOrOff;
     }
-    
-    public void CleanedUpDish(GameObject dish)
+
+    public void HighlightSinks(bool onOrOff)
+    {
+        foreach (GameObject sink in sinks)
+            sink.GetComponent<Outline>().enabled = onOrOff;
+    }
+
+    public void HighlightShelf(bool onOrOff)
+    {
+        foreach (GameObject shelf in shelves)
+            shelf.GetComponent<Outline>().enabled = onOrOff;
+    }
+
+    public void CleanedUpDish(Dishes dish)
     {
         dishesToCleanUp.Remove(dish);
         if (dishesToCleanUp.Count <= 0)

@@ -55,6 +55,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 break;
             case InteractableName.Figure:
                 break;
+            case InteractableName.Dishes:
+                TaskManager._Instance.HighlightSinks(true);
+                break;
         }
 
         // Invisible to raycast
@@ -69,6 +72,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         TaskManager._Instance.HighlightGarabageCan(false);
+        TaskManager._Instance.HighlightSinks(false);
 
         if (!CheckForInteraction()) return;
 
@@ -87,8 +91,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        // If raycast hits something
-        if (!Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask) || !hit.transform.CompareTag("GarbageCan")) return true;
+        // If raycast doesnt hit something
+        if (!Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) return true;
+        if (!hit.transform.CompareTag("GarbageCan") && !hit.transform.CompareTag("Sink")) return true;
 
         // Use item
         itemItIs.Use(hit);

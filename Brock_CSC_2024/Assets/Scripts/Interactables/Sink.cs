@@ -1,15 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class GarbageCan : Interactable
+public class Sink : Interactable
 {
-    [SerializeField]
-    private int garbageCanCapasity;
-
-    private void Start()
-    {
-        TaskManager._Instance.GarbageCans.Add(this.gameObject);
-    }
-
     public override void ApplyEffect()
     {
         return; // No effect
@@ -21,4 +15,10 @@ public class GarbageCan : Interactable
         // If item is held, remove item
         // If no item is held, open garbage can menu?
     }
+
+    void Start()
+    {
+        TaskManager._Instance.Sinks.Add(this.gameObject);
+    }
+
 }

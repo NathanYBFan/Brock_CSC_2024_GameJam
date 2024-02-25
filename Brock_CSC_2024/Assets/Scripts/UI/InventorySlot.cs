@@ -62,6 +62,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         GameObject item = GameObject.Instantiate(itemToAdd.InventoryDisplayItem, Vector3.zero, Quaternion.identity, itemDisplayPosition);
         item.GetComponent<DraggableItem>().ItemItIs = itemToAdd;
         item.GetComponent<Image>().sprite = itemToAdd.InventoryDisplayImage;
+        item.GetComponent<Image>().preserveAspect = true;
 
         return true;
     }

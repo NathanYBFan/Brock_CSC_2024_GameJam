@@ -4058,6 +4058,7 @@ MonoBehaviour:
   notePadScreen: {fileID: 242303529}
   scoreAssignedToTasks: 01000000010000000100000001000000
   garbageCans: []
+  sinks: []
   dishesToCleanUp: []
   emptyCans: []
 --- !u!1 &1142469741
