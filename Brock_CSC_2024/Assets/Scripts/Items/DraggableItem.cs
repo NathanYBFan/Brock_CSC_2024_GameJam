@@ -52,15 +52,16 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 TaskManager._Instance.HighlightGarabageCan(true);
                 break;
             case InteractableName.Garbage:
+                TaskManager._Instance.HighlightGarabageCan(true);
                 break;
             case InteractableName.Figure:
+                TaskManager._Instance.HighlightShelf(true);
                 break;
             case InteractableName.Dishes:
                 TaskManager._Instance.HighlightSinks(true);
                 break;
             case InteractableName.Paper:
                 TaskManager._Instance.HighlightShelf(true);
-                TaskManager._Instance.HighlightGarabageCan(true);
                 break;
         }
 

@@ -24,7 +24,7 @@ public class PlayerToCamera : MonoBehaviour
 
     private Vector3 currentVelocity;    // Current move speed of the camera
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (!GameManager._Instance.InGame) transform.position = positionInMenu;
         else transform.position = Vector3.SmoothDamp(transform.position, target.position + Offset, ref currentVelocity, movementSmoothing);

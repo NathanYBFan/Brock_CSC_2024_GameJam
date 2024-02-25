@@ -1790,7 +1790,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 15
+  field of view: 25
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1870,7 +1870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1731890372}
   Offset: {x: 0, y: 14.5, z: -13.75}
-  movementSmoothing: 1
+  movementSmoothing: 0.25
   positionInMenu: {x: 1.25, y: 11, z: -12.67}
 --- !u!1 &444455713
 GameObject:
