@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Foldout("Stats"), Tooltip("")]
     private float groundDrag;
+
+    [SerializeField]
+    private Animator anim;
     #endregion
 
     #region Private Variables
@@ -75,6 +78,12 @@ public class PlayerController : MonoBehaviour
         moveDirection = orientation.forward * move.z + orientation.right * move.x;
 
         rigidBody.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        if (moveDirection == Vector3.zero) rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
+        if (moveDirection == Vector3.zero)
+        {
+            anim.SetBool("Walk", false);
+            rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
+        }
+        else
+            anim.SetBool("Walk", true);
     }
 }

@@ -4,13 +4,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayButtonPressed()
     {
-        LevelLoadManager._Instance.StartLoadNewLevel(LevelLoadManager._Instance.LevelNamesList[2]);
-        LevelLoadManager._Instance.StartNewGame();
-    }
-
-    public void SettingsButtonPressed()
-    {
-        LevelLoadManager._Instance.LoadMenuOverlay(LevelLoadManager._Instance.LevelNamesList[1]);
+        LevelLoadManager._Instance.StartLoadNewLevel(LevelLoadManager._Instance.LevelNamesList[4]);
     }
 
     public void QuitButtonPressed()

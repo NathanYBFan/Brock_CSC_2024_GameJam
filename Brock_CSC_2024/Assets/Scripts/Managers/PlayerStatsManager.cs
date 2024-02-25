@@ -11,7 +11,7 @@ public class PlayerStatsManager : MonoBehaviour
     [Foldout("Stats"), Tooltip("Array of points for each player")]
     private int playerPoints;
 
-    [SerializeField, ReadOnly]
+    [SerializeField]
     [Foldout("Stats"), Tooltip("Array of points for each player")]
     private int pointsNeededToWin;
     #endregion

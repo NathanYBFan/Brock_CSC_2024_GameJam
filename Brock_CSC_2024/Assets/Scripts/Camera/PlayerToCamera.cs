@@ -1,5 +1,4 @@
 using NaughtyAttributes;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerToCamera : MonoBehaviour
@@ -20,11 +19,14 @@ public class PlayerToCamera : MonoBehaviour
     [Tooltip("How much delay before the camera catches up with the player")]
     private float movementSmoothing = 0.25f;
 
+    [SerializeField]
+    private Vector3 positionInMenu;
+
     private Vector3 currentVelocity;    // Current move speed of the camera
 
     private void FixedUpdate()
     {
-        if (!GameManager._Instance.InGame) return;
-        transform.position = Vector3.SmoothDamp(transform.position, target.position + Offset, ref currentVelocity, movementSmoothing);
+        if (!GameManager._Instance.InGame) transform.position = positionInMenu;
+        else transform.position = Vector3.SmoothDamp(transform.position, target.position + Offset, ref currentVelocity, movementSmoothing);
     }
 }
