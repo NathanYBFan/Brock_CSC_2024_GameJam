@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
 		// Win/Lose screen
 		inGame = false;
 		QuitToMainMenu(); // Debug only, delete this later
+		TaskManager._Instance.ResetAll();
     }
 
     public void PauseGame(bool enablePauseMenu)

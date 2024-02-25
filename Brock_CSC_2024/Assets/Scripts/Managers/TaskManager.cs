@@ -104,4 +104,13 @@ public class TaskManager : MonoBehaviour
         if (paperToCleanUp.Count <= 0)
             TaskComplete(3);
     }
+
+    public void ResetAll()
+    {
+        garbageCans.Clear();
+        shelves.Clear();
+        dishesToCleanUp.Clear();
+        paperToCleanUp.Clear();
+        emptyCans.Clear();
+    }
 }
