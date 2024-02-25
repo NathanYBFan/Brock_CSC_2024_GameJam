@@ -10,12 +10,13 @@ public class Doors : MonoBehaviour
     private int openDegrees = 120;
 
     [SerializeField]
-    private int closeDegrees = 0;
-
-    [SerializeField]
     private float rotateSpeed = 1;
 
+    [SerializeField]
+    private Collider doorCollider;
+
     private bool isClosed = true;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,9 +27,15 @@ public class Doors : MonoBehaviour
         Quaternion adjustedRotation = doorToPivot.transform.rotation;
 
         if (isClosed) // If door is closed
+        {
             adjustedRotation *= Quaternion.Euler(0, 0, openDegrees);
+            doorCollider.enabled = false;
+        }
         else
-            adjustedRotation *= Quaternion.Euler(0, 0, closeDegrees);
+        {
+            adjustedRotation *= Quaternion.Euler(0, 0, -openDegrees);
+            doorCollider.enabled = true;
+        }
 
         StartCoroutine(RotateDoor(doorToPivot.transform.rotation, adjustedRotation));
         isClosed = !isClosed;

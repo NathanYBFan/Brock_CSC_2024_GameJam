@@ -160,8 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorToPivot: {fileID: 8811653447402726462}
   openDegrees: 120
-  closeDegrees: 0
   rotateSpeed: 1
+  doorCollider: {fileID: 8052310574631254085}
 --- !u!1 &8811653447402726462
 GameObject:
   m_ObjectHideFlags: 0
