@@ -17,6 +17,9 @@ public class Dishes : Item
             case "Sink":
                 PlayerStatsManager._Instance.IncreasePoints(100);
                 break;
+            case "Shelf":
+                PlayerStatsManager._Instance.IncreasePoints(-100);
+                break;
         }
         TaskManager._Instance.CleanedUpDish(this);
     }

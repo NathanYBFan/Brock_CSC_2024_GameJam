@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 1853406365965764080}
   - component: {fileID: 1743202464136483050}
   - component: {fileID: 1972720204438644368}
+  - component: {fileID: 5705924877909913824}
   - component: {fileID: -6586639631724969558}
-  - component: {fileID: 7600025708046590356}
   - component: {fileID: 8682709656710174434}
   - component: {fileID: 6204957961031135942}
-  - component: {fileID: -2992357752883885755}
   m_Layer: 9
   m_Name: CanB1
   m_TagString: Untagged
@@ -88,6 +87,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5705924877909913824
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160377897138013126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2088493, y: 0.20884933, z: 0.29723632}
+  m_Center: {x: 0, y: 0.30109638, z: 0.14861816}
 --- !u!114 &-6586639631724969558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,20 +118,6 @@ MonoBehaviour:
   inventoryDisplayItem: {fileID: 5943293106578486438, guid: b77b05181308e774f8bf2275ba716413,
     type: 3}
   nameOfInteractable: 1
---- !u!64 &7600025708046590356
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4160377897138013126}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6045795914518115107, guid: c9b715708c3630543968b0872f7a235b, type: 3}
 --- !u!114 &8682709656710174434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,14 +125,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4160377897138013126}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 5
+  outlineWidth: 2
   precomputeOutline: 1
   bakeKeys:
   - {fileID: -6045795914518115107, guid: c9b715708c3630543968b0872f7a235b, type: 3}
@@ -388,19 +386,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outline: {fileID: 8682709656710174434}
---- !u!54 &-2992357752883885755
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4160377897138013126}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0

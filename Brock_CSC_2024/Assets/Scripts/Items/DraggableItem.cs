@@ -58,6 +58,10 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             case InteractableName.Dishes:
                 TaskManager._Instance.HighlightSinks(true);
                 break;
+            case InteractableName.Paper:
+                TaskManager._Instance.HighlightShelf(true);
+                TaskManager._Instance.HighlightGarabageCan(true);
+                break;
         }
 
         // Invisible to raycast
@@ -73,6 +77,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         TaskManager._Instance.HighlightGarabageCan(false);
         TaskManager._Instance.HighlightSinks(false);
+        TaskManager._Instance.HighlightShelf(false);
 
         if (!CheckForInteraction()) return;
 
@@ -93,7 +98,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         // If raycast doesnt hit something
         if (!Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) return true;
-        if (!hit.transform.CompareTag("GarbageCan") && !hit.transform.CompareTag("Sink")) return true;
+        if (!hit.transform.CompareTag("GarbageCan") && !hit.transform.CompareTag("Sink") && !hit.transform.CompareTag("Shelf")) return true;
 
         // Use item
         itemItIs.Use(hit);

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GarbageCan
   - Sink
+  - Shelf
   layers:
   - Default
   - TransparentFX

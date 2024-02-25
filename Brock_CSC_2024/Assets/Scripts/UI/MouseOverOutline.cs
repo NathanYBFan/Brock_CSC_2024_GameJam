@@ -4,6 +4,12 @@ public class MouseOverOutline : MonoBehaviour
 {
     [SerializeField]
     private Outline outline;
+    
+    private void Start()
+    {
+        NotHovering();
+    }
+
     public void Hovering()
     {
         outline.enabled = true;

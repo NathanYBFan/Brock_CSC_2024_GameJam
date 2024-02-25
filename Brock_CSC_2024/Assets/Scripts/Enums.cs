@@ -1,1 +1,1 @@
-public enum InteractableName { Garbage, Can, Figure, Dishes}
+public enum InteractableName { Garbage, Can, Figure, Dishes, Paper}

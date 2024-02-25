@@ -4054,13 +4054,16 @@ MonoBehaviour:
   - Put away anime figures
   - Clean up empty cans
   - Wash dishes
+  - Put away papers & books
   - Clean yourself
-  notePadScreen: {fileID: 242303529}
-  scoreAssignedToTasks: 01000000010000000100000001000000
   garbageCans: []
   sinks: []
+  shelves: []
   dishesToCleanUp: []
+  paperToCleanUp: []
   emptyCans: []
+  scoreAssignedToTasks: 01000000010000000100000001000000
+  notePadScreen: {fileID: 242303529}
 --- !u!1 &1142469741
 GameObject:
   m_ObjectHideFlags: 0

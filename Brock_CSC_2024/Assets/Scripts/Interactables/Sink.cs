@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Sink : Interactable
@@ -11,9 +9,7 @@ public class Sink : Interactable
 
     public override void InteractedWith()
     {
-        Debug.Log("Interacted with Garbage Can");
-        // If item is held, remove item
-        // If no item is held, open garbage can menu?
+        Debug.Log("Interacted with Sink");
     }
 
     void Start()

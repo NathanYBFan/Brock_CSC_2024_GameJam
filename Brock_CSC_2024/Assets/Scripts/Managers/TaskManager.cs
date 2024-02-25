@@ -9,12 +9,6 @@ public class TaskManager : MonoBehaviour
     private string[] availableTasks;
 
     [SerializeField]
-    private NotePadScreen notePadScreen;
-
-    [SerializeField]
-    private int[] scoreAssignedToTasks;
-
-    [SerializeField]
     private List<GameObject> garbageCans;
 
     [SerializeField]
@@ -27,8 +21,18 @@ public class TaskManager : MonoBehaviour
     private List<Dishes> dishesToCleanUp;
 
     [SerializeField]
-    private List<Cans> emptyCans;
+    private List<Paper> paperToCleanUp;
 
+    [SerializeField]
+    private List<Cans> emptyCans;
+    
+    [SerializeField]
+    private int[] scoreAssignedToTasks;
+
+    [SerializeField]
+    private NotePadScreen notePadScreen;
+
+    public List<Paper> PaperToCleanUp { get { return paperToCleanUp; } set { paperToCleanUp = value; } }
     public List<Cans> EmptyCans { get { return emptyCans; } set { emptyCans = value; } }
     public List<Dishes> DishesToCleanUp { get { return dishesToCleanUp; } set { dishesToCleanUp = value; } }
     public List<GameObject> GarbageCans { get { return garbageCans; } set { garbageCans = value; } }
@@ -80,6 +84,13 @@ public class TaskManager : MonoBehaviour
             shelf.GetComponent<Outline>().enabled = onOrOff;
     }
 
+    public void CleanedUpCan(Cans can)
+    {
+        emptyCans.Remove(can);
+        if (emptyCans.Count <= 0)
+            TaskComplete(1);
+    }
+
     public void CleanedUpDish(Dishes dish)
     {
         dishesToCleanUp.Remove(dish);
@@ -87,10 +98,10 @@ public class TaskManager : MonoBehaviour
             TaskComplete(2);
     }
 
-    public void CleanedUpCan(Cans can)
+    public void CleanedUpPaper(Paper paper)
     {
-        emptyCans.Remove(can);
-        if (emptyCans.Count <= 0)
-            TaskComplete(1);
+        paperToCleanUp.Remove(paper);
+        if (paperToCleanUp.Count <= 0)
+            TaskComplete(3);
     }
 }

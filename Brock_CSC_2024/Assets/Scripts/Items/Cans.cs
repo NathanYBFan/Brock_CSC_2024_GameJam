@@ -15,6 +15,9 @@ public class Cans : Item
                 PlayerStatsManager._Instance.IncreasePoints(100);
                 break;
             case "Sink":
+                PlayerStatsManager._Instance.IncreasePoints(0);
+                break;
+            case "Shelf":
                 PlayerStatsManager._Instance.IncreasePoints(50);
                 break;
         }
